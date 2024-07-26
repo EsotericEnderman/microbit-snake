@@ -37,8 +37,19 @@ class Snake {
 
     parts: LinkedList<SnakePart>;
 
-    public static generateRandomParts(count: number) {
+    public static generateRandomParts(partCount: number) {
         const startingLocation = Vector.getRandomVector(minimumX, minimumY, maximumX, maximumY);
+
+        const parts: LinkedList<SnakePart> = {
+            head: {
+                value: startingLocation,
+                next: null
+            }
+        }
+
+        for (let i = 1; i <= partCount; i++) {
+
+        }
     }
 }
 
