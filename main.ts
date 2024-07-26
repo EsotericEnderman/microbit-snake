@@ -6,3 +6,12 @@ type LinkedListElement<T> = {
 type LinkedList<T> = {
     head: LinkedListElement<T>
 }
+
+type SnakePart = {
+    x: number;
+    y: number;
+}
+
+class Snake {
+    parts: LinkedList<SnakePart>;
+}
