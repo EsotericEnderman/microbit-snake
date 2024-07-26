@@ -4,7 +4,7 @@ type LinkedListElement<T> = {
 }
 
 type LinkedList<T> = {
-    head: LinkedListElement<T>
+    head: LinkedListElement<T>;
 }
 
 type SnakePart = {
