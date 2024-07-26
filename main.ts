@@ -7,11 +7,15 @@ type LinkedList<T> = {
     head: LinkedListElement<T>;
 }
 
-type SnakePart = {
+type Vector = {
     x: number;
     y: number;
 }
 
+type SnakePart = Vector;
+
 class Snake {
     parts: LinkedList<SnakePart>;
 }
+
+const snake = new Snake();
