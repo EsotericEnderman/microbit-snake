@@ -5,12 +5,20 @@ const maximumX = 4;
 const maximumY = 4;
 
 type LinkedListElement<T> = {
-  value: T;
-  next: LinkedListElement<T> | null;
+    value: T;
+    next: LinkedListElement<T> | null;
 }
 
-type LinkedList<T> = {
-    head: LinkedListElement<T>;
+class LinkedList<T> {
+    elements: LinkedListElement<T>[];
+
+    constructor(...elements: LinkedListElement<T>[]) {
+
+    }
+
+    get head() {
+        return this.elements[0];
+    }
 }
 
 class Vector {
@@ -40,12 +48,12 @@ class Snake {
     public static generateRandomParts(partCount: number) {
         const startingLocation = Vector.getRandomVector(minimumX, minimumY, maximumX, maximumY);
 
-        const parts: LinkedList<SnakePart> = {
-            head: {
+        const parts: LinkedList<SnakePart> = new LinkedList(
+            {
                 value: startingLocation,
                 next: null
             }
-        }
+        )
 
         for (let i = 1; i <= partCount; i++) {
 
