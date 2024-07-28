@@ -14,11 +14,13 @@ class LinkedList<T> {
         return elements[elements.length - 1];
     }
 
-    public push(element: LinkedListElement<T>) {
+    public push(element: T) {
         const elements = this.elements;
 
-        elements.push(element);
-        elements[elements.length - 2].next = element;
+        const elementToAppend: LinkedListElement<T> = { value: element, next: null };
+
+        elements.push(elementToAppend);
+        elements[elements.length - 2].next = elementToAppend;
     }
 
     public pop() {
