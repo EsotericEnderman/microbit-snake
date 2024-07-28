@@ -4,23 +4,39 @@ class Snake {
     parts: LinkedList<SnakePart>;
 
     public static generateRandomParts(partCount: number) {
-        const startingLocation = Vector.getRandomVector(minimumX, minimumY, maximumX, maximumY);
+        let currentPosition = Vector.getRandomVector(minimumX, minimumY, maximumX, maximumY);
 
         const parts: LinkedList<SnakePart> = new LinkedList(
             {
-                value: startingLocation,
+                value: currentPosition,
                 next: null
             }
         )
 
         for (let i = 1; i <= partCount; i++) {
-            const rotation = random(0, 270, 90);
-            console.log(rotation);
+            const directions = [Vector.north, Vector.east, Vector.south, Vector.west];
 
-            const direction = Vector.east.clone().rotate(random(0, 270, 90) * degreesToRadians);
+            for (let i = 0; i < directions.length; i++) {
+                const direction = directions[i];
 
-            console.log(direction.x);
-            console.log(direction.y);
+                const positionClone = currentPosition.clone();
+                positionClone.addVector(direction);
+
+                const isOutOfBounds = !ledSquare.includes(positionClone);
+
+                if (isOutOfBounds) {
+                    directions.splice(i, 1);
+                    i--;
+                }
+            }
+
+            const direction = chooseRandomly(directions);
+
+            currentPosition = currentPosition.clone().addVector(direction);
+
+            parts.push(currentPosition)
         }
+
+        return parts;
     }
 }
