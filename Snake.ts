@@ -6,6 +6,14 @@ class Snake {
     constructor(parts?: LinkedList<SnakePart>, direction?: Vector) {
         this.parts = parts ?? Snake.generateRandomParts(startingSnakeLength);
         this.direction = direction ?? chooseRandomly(Vector.cardinalDirections);
+
+        loops.everyInterval(snakeMoveIntervalMilliseconds, this.move)
+    }
+
+    private move() {
+        for (const part of this.parts.elements) {
+            part.value = part.next?.value ?? null;
+        }
     }
 
     public static generateRandomParts(partCount: number): LinkedList<SnakePart> {
