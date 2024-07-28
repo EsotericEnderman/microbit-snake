@@ -101,6 +101,10 @@ class Vector {
         return this;
     }
 
+    public addVector(vector: Vector) {
+        return this.add(vector.x, vector.y);
+    }
+
     public clone() {
         return new Vector(this.x, this.y);
     }
