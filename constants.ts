@@ -8,3 +8,5 @@ const degreesToRadians = Math.PI / 180;
 const radiansToDegrees = 1 / degreesToRadians;
 
 const startingSnakeLength = 2;
+
+const ledSquare = new Square(new Vector(minimumX, minimumY), maximumX - minimumX + 1);
