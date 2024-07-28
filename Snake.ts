@@ -3,7 +3,12 @@ class Snake {
 
     parts: LinkedList<SnakePart>;
 
-    public static generateRandomParts(partCount: number) {
+    constructor(parts?: LinkedList<SnakePart>, direction?: Vector) {
+        this.parts = parts ?? Snake.generateRandomParts(startingSnakeLength);
+        this.direction = direction ?? chooseRandomly([Vector.north, Vector.east, Vector.south, Vector.west]);
+    }
+
+    public static generateRandomParts(partCount: number): LinkedList<SnakePart> {
         let currentPosition = Vector.getRandomVector(minimumX, minimumY, maximumX, maximumY);
 
         const parts: LinkedList<SnakePart> = new LinkedList(
