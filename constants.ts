@@ -6,3 +6,5 @@ const maximumY = 4;
 
 const degreesToRadians = Math.PI / 180;
 const radiansToDegrees = 1 / degreesToRadians;
+
+const startingSnakeLength = 2;
