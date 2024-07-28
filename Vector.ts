@@ -7,6 +7,8 @@ class Vector {
     public static readonly south = new Vector(0, -1);
     public static readonly west = new Vector(-1, 0);
 
+    public static readonly cardinalDirections = [Vector.north, Vector.east, Vector.south, Vector.west];
+
     constructor(x: number, y: number) {
         this.x = x;
         this.y = y;
