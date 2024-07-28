@@ -16,7 +16,8 @@
         "LinkedList.ts",
         "Snake.ts",
         "LinkedListElement.ts",
-        "SnakePart.ts"
+        "SnakePart.ts",
+        "Rectangle.ts"
     ],
     "testFiles": [
         "test.ts"
