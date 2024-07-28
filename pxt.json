@@ -19,7 +19,8 @@
         "SnakePart.ts",
         "Rectangle.ts",
         "Square.ts",
-        "chooseRandomly.ts"
+        "chooseRandomly.ts",
+        "cloneArray.ts"
     ],
     "testFiles": [
         "test.ts"
