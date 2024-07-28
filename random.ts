@@ -1,7 +1,7 @@
 function random(minimum: number, maximum: number, interval?: number) {
     const intervalRandomNumber = Math.random() * (minimum - maximum);
 
-    if (interval) {
+    if (!interval) {
         return minimum + intervalRandomNumber;
     }
 
