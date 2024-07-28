@@ -4,6 +4,19 @@ const minimumY = 0;
 const maximumX = 4;
 const maximumY = 4;
 
+function round(number: number, interval: number) {
+    return Math.round(number / interval) * interval;
+}
+
+function random(minimum: number, maximum: number, interval: number) {
+    const intervalRandomNumber = Math.random() * (minimum - maximum);
+
+    const rounded = round(intervalRandomNumber, interval);
+    const clamped = Math.max(rounded, rounded - interval);
+
+    return minimum + clamped;
+}
+
 type LinkedListElement<T> = {
     value: T;
     next: LinkedListElement<T> | null;
