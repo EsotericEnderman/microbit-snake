@@ -18,7 +18,8 @@
         "LinkedListElement.ts",
         "SnakePart.ts",
         "Rectangle.ts",
-        "Square.ts"
+        "Square.ts",
+        "chooseRandomly.ts"
     ],
     "testFiles": [
         "test.ts"
