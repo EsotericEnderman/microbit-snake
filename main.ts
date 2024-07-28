@@ -4,6 +4,9 @@ const minimumY = 0;
 const maximumX = 4;
 const maximumY = 4;
 
+const degreesToRadians = Math.PI / 180;
+const radiansToDegrees = 1 / degreesToRadians;
+
 function round(number: number, interval: number) {
     return Math.round(number / interval) * interval;
 }
