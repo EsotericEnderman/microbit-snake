@@ -1,12 +1,15 @@
-function random(minimum: number, maximum: number, interval?: number) {
-    const intervalRandomNumber = Math.random() * (minimum - maximum);
+function random(minimum: number, maximum: number, roundInterval?: number) {
+    const interval = minimum - maximum; 
 
-    if (!interval) {
-        return minimum + intervalRandomNumber;
+    let intervalRandomNumber = Math.random() * interval;
+
+    if (roundInterval) {
+        intervalRandomNumber = round(intervalRandomNumber, roundInterval);
+
+        if (intervalRandomNumber > interval) {
+            intervalRandomNumber -= roundInterval;
+        }
     }
 
-    const rounded = round(intervalRandomNumber, interval);
-    const clamped = Math.max(rounded, rounded - interval);
-
-    return minimum + clamped;
+    return minimum + intervalRandomNumber;
 }
