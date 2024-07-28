@@ -87,6 +87,20 @@ class Vector {
         return this;
     }
 
+    public round() {
+        this.x = Math.round(this.x);
+        this.y = Math.round(this.y);
+
+        return this;
+    }
+
+    public add(x: number, y: number) {
+        this.x += x;
+        this.y += y;
+
+        return this;
+    }
+
     public clone() {
         return new Vector(this.x, this.y);
     }
