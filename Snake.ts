@@ -52,6 +52,10 @@ class Snake {
 
             const part = this.parts.elements[i];
 
+            if (part === this.parts.tail) {
+                led.unplot(part.value.x, part.value.y);
+            }
+
             if (part.next) {
                 console.log("Part " + (i + 1) + " is pointing to " + part.next.value.toString());
                 part.value = part.next.value.clone();
@@ -68,9 +72,6 @@ class Snake {
     }
 
     private draw() {
-        led.plotAll();
-        led.toggleAll();
-
         for (const part of this.parts.elements) {
             led.plot(part.value.x, part.value.y);
         }
