@@ -58,6 +58,7 @@ class Snake {
             } else {
                 console.log("Part " + (i + 1) + " is the first part");
                 part.value.addVector(this.direction);
+                ledSquare.wrapAround(part.value);
             }
         }
 
