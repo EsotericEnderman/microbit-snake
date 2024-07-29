@@ -1,5 +1,5 @@
 function random(minimum: number, maximum: number, roundInterval?: number) {
-    const interval = minimum - maximum; 
+    const interval = maximum - minimum; 
 
     let intervalRandomNumber = Math.random() * interval;
 
