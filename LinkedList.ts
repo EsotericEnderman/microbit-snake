@@ -1,7 +1,7 @@
 class LinkedList<T> {
-    elements: LinkedListElement<T>[];
+    public elements: LinkedListElement<T>[];
 
-    constructor(...elements: LinkedListElement<T>[]) {
+    constructor(elements: LinkedListElement<T>[]) {
         this.elements = elements;
     }
 
@@ -12,6 +12,12 @@ class LinkedList<T> {
     get tail() {
         const elements = this.elements;
         return elements[elements.length - 1];
+    }
+
+    get length() {
+        console.log(this.elements);
+
+        return this.elements.length;
     }
 
     public push(element: T) {

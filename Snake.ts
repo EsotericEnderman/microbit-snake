@@ -1,7 +1,7 @@
 class Snake {
     direction: Vector;
 
-    parts: LinkedList<SnakePart>;
+    parts: LinkedList<SnakePart> = new LinkedList([]);
 
     constructor(parts?: LinkedList<SnakePart>, direction?: Vector) {
         this.parts = parts;
@@ -9,6 +9,8 @@ class Snake {
         if (!this.parts) {
             this.parts = Snake.generateRandomParts(startingSnakeLength);
         }
+
+        console.log(this.parts.length);
 
         this.direction = direction;
 
@@ -20,11 +22,13 @@ class Snake {
     }
 
     private move() {
-        for (const part of this.parts.elements) {
+        for (let i = 0; i < this.parts.length; i++) {
+            const part = this.parts.elements[i];
+
             if (part.next) {
-                part.value = part.next.value;
+                // part.value = part.next.value;
             } else {
-                part.value.addVector(this.direction);
+                // part.value.addVector(this.direction);
             }
         }
     }
@@ -33,10 +37,10 @@ class Snake {
         let currentPosition = Vector.getRandomVector(minimumX, minimumY, maximumX, maximumY);
 
         const parts: LinkedList<SnakePart> = new LinkedList(
-            {
+            [{
                 value: currentPosition,
                 next: null
-            }
+            }]
         )
 
         for (let i = 1; i <= partCount; i++) {
@@ -58,9 +62,9 @@ class Snake {
 
             const direction = chooseRandomly(directions);
 
-            currentPosition = currentPosition.clone().addVector(direction);
+            // currentPosition = currentPosition.clone().add(direction.x, direction.y);
 
-            parts.push(currentPosition)
+            // parts.push(currentPosition)
         }
 
         return parts;
