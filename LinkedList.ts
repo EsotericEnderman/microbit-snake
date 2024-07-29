@@ -6,17 +6,15 @@ class LinkedList<T> {
     }
 
     get head() {
-        return this.elements[0];
-    }
-
-    get tail() {
         const elements = this.elements;
         return elements[elements.length - 1];
     }
 
-    get length() {
-        console.log(this.elements);
+    get tail() {
+        return this.elements[0];
+    }
 
+    get length() {
         return this.elements.length;
     }
 

@@ -10,40 +10,106 @@ class Snake {
             this.parts = Snake.generateRandomParts(startingSnakeLength);
         }
 
-        console.log(this.parts.length);
-
         this.direction = direction;
 
         if (!this.direction) {
-            this.direction = chooseRandomly(Vector.cardinalDirections);
+            const directions = cloneArray(Vector.cardinalDirections);
+
+            for (let i = 0; i < directions.length; i++) {
+                const head = this.parts.head;
+
+                const clone = head.value.clone().addVector(directions[i]);
+
+                if (this.isOnPosition(clone)) {
+                    directions.splice(i, 1);
+                    i--;
+                }
+            }
+
+            console.log("There are " + directions.length + " directions to choose from");
+            this.direction = chooseRandomly(directions);
+            console.log("Chosen direction = " + this.direction);
+
+            console.log("Snake = " + this.toString());
         }
 
         loops.everyInterval(snakeMoveIntervalMilliseconds, () => this.move())
     }
 
     private move() {
+        if (!this.direction) {
+            console.log("No direction defined");
+        }
+
+        console.log("Snake = " + this.toString())
+
+        console.log("Moving in direction " + this.direction);
+
+        console.log("There are " + this.parts.length + " parts");
+
         for (let i = 0; i < this.parts.length; i++) {
+            console.log("Moving part " + (i + 1));
+
             const part = this.parts.elements[i];
 
             if (part.next) {
-                // part.value = part.next.value;
+                console.log("Part " + (i + 1) + " is pointing to " + part.next.value.toString());
+                part.value = part.next.value.clone();
             } else {
-                // part.value.addVector(this.direction);
+                console.log("Part " + (i + 1) + " is the first part");
+                part.value.addVector(this.direction);
             }
         }
+
+        console.log("Snake = " + this.toString());
+
+        this.draw();
+    }
+
+    private draw() {
+        led.plotAll();
+        led.toggleAll();
+
+        for (const part of this.parts.elements) {
+            led.plot(part.value.x, part.value.y);
+        }
+    }
+
+    public isOnPosition(position: Vector) {
+        for (const part of this.parts.elements) {
+            if (part.value.equals(position)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public toString() {
+        let string = "[";
+
+        for (const position of this.parts.elements) {
+            string += position.value.toString();
+        }
+
+        string += "]";
+
+        return string;
     }
 
     public static generateRandomParts(partCount: number): LinkedList<SnakePart> {
         let currentPosition = Vector.getRandomVector(minimumX, minimumY, maximumX, maximumY);
 
+        console.log("Starting position = " + currentPosition.toString());
+
         const parts: LinkedList<SnakePart> = new LinkedList(
             [{
-                value: currentPosition,
+                value: currentPosition.clone(),
                 next: null
             }]
         )
 
-        for (let i = 1; i <= partCount; i++) {
+        for (let i = 1; i < partCount; i++) {
             const directions = cloneArray(Vector.cardinalDirections);
 
             for (let i = 0; i < directions.length; i++) {
@@ -61,11 +127,14 @@ class Snake {
             }
 
             const direction = chooseRandomly(directions);
+            currentPosition.addVector(direction);
 
-            // currentPosition = currentPosition.clone().add(direction.x, direction.y);
-
-            // parts.push(currentPosition)
+            parts.push(currentPosition.clone());
         }
+
+        console.log("Generated " + parts.length + " random parts");
+        console.log("Head = " + parts.head.value.toString());
+        console.log("Tail = " + parts.tail.value.toString());
 
         return parts;
     }

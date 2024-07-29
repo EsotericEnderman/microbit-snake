@@ -51,6 +51,14 @@ class Vector {
         return new Vector(this.x, this.y);
     }
 
+    public toString() {
+        return "(" + this.x + ", " + this.y + ")";
+    }
+
+    public equals(other: Vector) {
+        return other.x === this.x && other.y === this.y;
+    }
+
     public static getRandomVector(minimumX: number, minimumY: number, maximumX: number, maximumY: number) {
         const x = Math.floor(minimumX + Math.random() * (maximumX - minimumX));
         const y = Math.floor(minimumY + Math.random() * (maximumY - minimumY));

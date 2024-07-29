@@ -30,6 +30,6 @@ class Rectangle {
     public includes(position: Vector) {
         const { x, y } = position;
 
-        return x > this.minimumX && x < this.maximumX && y > this.minimumY && y < this.maximumY;
+        return x >= this.minimumX && x <= this.maximumX && y >= this.minimumY && y <= this.maximumY;
     }
 }
