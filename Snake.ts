@@ -86,6 +86,11 @@ class Snake {
 
     private onCollectedCollectible() {
         Collectible.instance.collect();
+        this.grow();
+    }
+
+    private grow() {
+        this.parts.push(this.parts.tail.value.clone().addVector(this.direction));
     }
 
     public hasCollectedCollectible() {
