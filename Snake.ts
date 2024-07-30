@@ -90,7 +90,7 @@ class Snake {
     }
 
     private grow() {
-        this.parts.push(this.parts.tail.value.clone().addVector(this.direction));
+        this.parts.push(ledSquare.wrapAround(this.parts.tail.value.clone().addVector(this.direction)));
     }
 
     public hasCollectedCollectible() {
