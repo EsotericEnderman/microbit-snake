@@ -18,6 +18,11 @@ class Collectible {
         Collectible.instance = Collectible.getRandomCollectible();
     }
 
+    public collect() {
+        this.despawn();
+        Collectible.instance = Collectible.getRandomCollectible();
+    }
+
     public despawn() {
         led.unplot(this.position.x, this.position.y);
     }

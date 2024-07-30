@@ -71,6 +71,10 @@ class Snake {
 
         console.log("Snake = " + this.toString());
 
+        if (this.hasCollectedCollectible()) {
+            this.onCollectedCollectible();
+        }
+
         this.draw();
     }
 
@@ -78,6 +82,14 @@ class Snake {
         for (const part of this.parts.elements) {
             led.plot(part.value.x, part.value.y);
         }
+    }
+
+    public hasCollectedCollectible() {
+        return this.isOnPosition(Collectible.instance.position);
+    }
+
+    private onCollectedCollectible() {
+        Collectible.instance.collect();
     }
 
     public hasCollectedCollectible() {
