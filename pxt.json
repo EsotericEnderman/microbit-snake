@@ -20,7 +20,8 @@
         "Rectangle.ts",
         "Square.ts",
         "chooseRandomly.ts",
-        "cloneArray.ts"
+        "cloneArray.ts",
+        "Collectible.ts"
     ],
     "testFiles": [
         "test.ts"

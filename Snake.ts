@@ -34,6 +34,9 @@ class Snake {
         }
 
         loops.everyInterval(snakeMoveIntervalMilliseconds, () => this.move())
+
+        input.onButtonPressed(Button.A, () => snake.direction.rotate(-90 * degreesToRadians).round());
+        input.onButtonPressed(Button.B, () => snake.direction.rotate(90 * degreesToRadians).round());
     }
 
     private move() {
