@@ -80,6 +80,10 @@ class Snake {
         }
     }
 
+    public hasCollectedCollectible() {
+        return this.isOnPosition(Collectible.instance.position);
+    }
+
     public isOnPosition(position: Vector) {
         for (const part of this.parts.elements) {
             if (part.value.equals(position)) {
