@@ -84,10 +84,6 @@ class Snake {
         }
     }
 
-    public hasCollectedCollectible() {
-        return this.isOnPosition(Collectible.instance.position);
-    }
-
     private onCollectedCollectible() {
         Collectible.instance.collect();
     }
