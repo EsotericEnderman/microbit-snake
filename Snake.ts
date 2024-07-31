@@ -100,8 +100,8 @@ class Snake {
 
         let directions = cloneArray(Vector.cardinalDirections);
 
-        for (let i = 0; i < this.parts.length; i++) {
-            const direction = this.parts.elements[i].value;
+        for (let i = 0; i < directions.length; i++) {
+            const direction = directions[i];
             const cloned = tail.value.clone().addVector(direction);
 
             if (this.isOnPosition(cloned)) {
