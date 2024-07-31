@@ -102,7 +102,7 @@ class Snake {
 
         for (let i = 0; i < directions.length; i++) {
             const direction = directions[i];
-            const cloned = tail.value.clone().addVector(direction);
+            const cloned = ledSquare.wrapAround(tail.value.clone().addVector(direction));
 
             if (this.isOnPosition(cloned)) {
                 directions.splice(i, 1);
@@ -116,7 +116,7 @@ class Snake {
         }
 
         const selectedDirection = chooseRandomly(directions);
-        const newPart = tail.value.clone().addVector(selectedDirection);
+        const newPart = ledSquare.wrapAround(tail.value.clone().addVector(selectedDirection));
 
         this.parts.push(newPart);
     }
