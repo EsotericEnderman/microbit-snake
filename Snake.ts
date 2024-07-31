@@ -1,7 +1,15 @@
 class Snake {
-    direction: Vector;
+    private direction: Vector;
 
-    parts: BiDirectionalLinkedList<SnakePart> = new BiDirectionalLinkedList([]);
+    private parts: BiDirectionalLinkedList<SnakePart> = new BiDirectionalLinkedList([]);
+
+    get head() {
+        return this.parts.head;
+    }
+
+    get tail() {
+        return this.parts.tail;
+    }
 
     constructor(parts?: BiDirectionalLinkedList<SnakePart>, direction?: Vector) {
         this.parts = parts;
@@ -16,9 +24,7 @@ class Snake {
             const directions = cloneArray(Vector.cardinalDirections);
 
             for (let i = 0; i < directions.length; i++) {
-                const head = this.parts.head;
-
-                const clone = head.value.clone().addVector(directions[i]);
+                const clone = this.head.value.clone().addVector(directions[i]);
 
                 if (this.isOnPosition(clone)) {
                     directions.splice(i, 1);
@@ -55,8 +61,8 @@ class Snake {
 
             const part = this.parts.elements[i];
 
-            const isFirstPart = part === this.parts.head;
-            const isLastPart = part === this.parts.tail;
+            const isFirstPart = part === this.head;
+            const isLastPart = part === this.tail;
 
             if (isLastPart) {
                 console.log("Unplotting " + part.value.toString());
@@ -98,7 +104,7 @@ class Snake {
     private grow() {
         console.log("Growing snake");
 
-        const tail = this.parts.tail;
+        const tail = this.tail;
 
         console.log("The tail is at " + tail.value.toString());
 
@@ -119,7 +125,7 @@ class Snake {
 
             console.log("Checking direction " + direction.toString());
 
-            const cloned = ledSquare.wrapAround(tail.value.clone().addVector(direction));
+            const cloned = ledSquare.wrapAround(this.tail.value.clone().addVector(direction));
 
             console.log("Checking position " + cloned.toString());
 

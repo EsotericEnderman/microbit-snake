@@ -1,6 +1,6 @@
 class Vector implements Cloneable<Vector> {
-    x: number;
-    y: number;
+    public x: number;
+    public y: number;
 
     public static readonly north = new Vector(0, 1);
     public static readonly east = new Vector(1, 0);
