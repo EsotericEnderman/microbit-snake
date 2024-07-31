@@ -1,4 +1,5 @@
 class BiDirectionalLinkedList<T> {
+
     public elements: BiDirectionalLinkedListElement<T>[];
 
     constructor(elements: BiDirectionalLinkedListElement<T>[]) {

@@ -1,4 +1,5 @@
 class Vector implements Cloneable<Vector> {
+
     public x: number;
     public y: number;
 

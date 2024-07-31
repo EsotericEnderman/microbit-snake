@@ -1,4 +1,5 @@
 class Rectangle {
+
     topLeft: Vector;
 
     width: number;
