@@ -1,7 +1,10 @@
 class Snake {
+
     private direction: Vector;
 
     private parts: BiDirectionalLinkedList<SnakePart> = new BiDirectionalLinkedList([]);
+
+    private score: number = 0;
 
     get head() {
         return this.parts.head;
@@ -42,6 +45,10 @@ class Snake {
     }
 
     private move() {
+        if (this.hasCollectedCollectible()) {
+            this.onCollectedCollectible();
+        }
+
         for (let i = this.parts.length - 1; i >= 0; i--) {
             const part = this.parts.elements[i];
 
@@ -95,6 +102,7 @@ class Snake {
     }
 
     private onCollectedCollectible() {
+        this.score++;
         Collectible.instance.collect();
         this.grow();
     }
@@ -128,7 +136,7 @@ class Snake {
     }
 
     private gameOver() {
-        basic.showString("GAME OVER!");
+        basic.showString("GAME OVER! SCORE: " + this.score);
     }
 
     public hasCollectedCollectible() {
