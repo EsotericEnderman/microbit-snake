@@ -1,8 +1,8 @@
-function cloneArray<T>(array: T[]) {
+function cloneArray<T extends Cloneable<T>>(array: T[]) {
     const newArray: T[] = [];
 
     for (const element of array) {
-        newArray.push(element)
+        newArray.push(element.clone());
     }
 
     return newArray;
