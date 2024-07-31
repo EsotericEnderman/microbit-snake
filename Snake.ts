@@ -161,13 +161,19 @@ class Snake {
     }
 
     public isOnPosition(position: Vector) {
+        return this.getPartsTouchingPosition(position).length !== 0;
+    }
+
+    public getPartsTouchingPosition(position: Vector) {
+        const parts = [];
+
         for (const part of this.parts.elements) {
             if (part.value.equals(position)) {
-                return true;
+                parts.push(part);
             }
         }
 
-        return false;
+        return parts;
     }
 
     public toString() {
