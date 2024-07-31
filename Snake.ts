@@ -79,6 +79,11 @@ class Snake {
             }
         }
 
+        if (this.isTouchingSelf()) {
+            this.gameOver();
+            return;
+        }
+
         console.log("Snake = " + this.toString());
 
         if (this.hasCollectedCollectible()) {
@@ -86,6 +91,22 @@ class Snake {
         }
 
         this.draw();
+    }
+
+    private isTouchingSelf() {
+        for (const part of this.parts.elements) {
+            const partsTouchingPosition = this.getPartsTouchingPosition(part.value);
+
+            for (const partTouchingPosition of partsTouchingPosition) {
+                if (partTouchingPosition === part) {
+                    continue;
+                }
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private draw() {
