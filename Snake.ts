@@ -1,9 +1,9 @@
 class Snake {
     direction: Vector;
 
-    parts: LinkedList<SnakePart> = new LinkedList([]);
+    parts: BiDirectionalLinkedList<SnakePart> = new BiDirectionalLinkedList([]);
 
-    constructor(parts?: LinkedList<SnakePart>, direction?: Vector) {
+    constructor(parts?: BiDirectionalLinkedList<SnakePart>, direction?: Vector) {
         this.parts = parts;
 
         if (!this.parts) {
@@ -133,15 +133,16 @@ class Snake {
         return string;
     }
 
-    public static generateRandomParts(partCount: number): LinkedList<SnakePart> {
+    public static generateRandomParts(partCount: number): BiDirectionalLinkedList<SnakePart> {
         let currentPosition = Vector.getRandomVector(minimumX, minimumY, maximumX, maximumY);
 
         console.log("Starting position = " + currentPosition.toString());
 
-        const parts: LinkedList<SnakePart> = new LinkedList(
+        const parts: BiDirectionalLinkedList<SnakePart> = new BiDirectionalLinkedList(
             [{
                 value: currentPosition.clone(),
-                next: null
+                next: null,
+                previous: null
             }]
         )
 

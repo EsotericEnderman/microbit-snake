@@ -1,7 +1,7 @@
-class LinkedList<T> {
-    public elements: LinkedListElement<T>[];
+class BiDirectionalLinkedList<T> {
+    public elements: BiDirectionalLinkedListElement<T>[];
 
-    constructor(elements: LinkedListElement<T>[]) {
+    constructor(elements: BiDirectionalLinkedListElement<T>[]) {
         this.elements = elements;
     }
 
@@ -20,11 +20,12 @@ class LinkedList<T> {
 
     public push(element: T) {
         const elements = this.elements;
+        const lastElement = elements[elements.length - 1];
 
-        const elementToAppend: LinkedListElement<T> = { value: element, next: null };
+        const elementToAppend: BiDirectionalLinkedListElement<T> = { value: element, next: null, previous: lastElement };
 
         elements.push(elementToAppend);
-        elements[elements.length - 2].next = elementToAppend;
+        lastElement.next = elementToAppend;
     }
 
     public shift() {
@@ -32,9 +33,10 @@ class LinkedList<T> {
     }
 
     public unshift(value: T) {
-        const element = {
+        const element: BiDirectionalLinkedListElement<T> = {
             value,
-            next: this.head
+            next: this.head,
+            previous: null
         }
 
         this.elements.unshift(element);
