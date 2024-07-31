@@ -6,12 +6,12 @@ class LinkedList<T> {
     }
 
     get head() {
-        const elements = this.elements;
-        return elements[elements.length - 1];
+        return this.elements[0];
     }
 
     get tail() {
-        return this.elements[0];
+        const elements = this.elements;
+        return elements[elements.length - 1];
     }
 
     get length() {
@@ -25,6 +25,19 @@ class LinkedList<T> {
 
         elements.push(elementToAppend);
         elements[elements.length - 2].next = elementToAppend;
+    }
+
+    public shift() {
+        this.elements.shift();
+    }
+
+    public unshift(value: T) {
+        const element = {
+            value,
+            next: this.head
+        }
+
+        this.elements.unshift(element);
     }
 
     public pop() {

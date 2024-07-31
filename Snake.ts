@@ -56,16 +56,20 @@ class Snake {
             const part = this.parts.elements[i];
 
             if (part === this.parts.tail) {
+                console.log("Unplotting " + part.value.toString());
                 led.unplot(part.value.x, part.value.y);
             }
 
-            if (part.next) {
+            const isLastPart = !part.next;
+            const isFirstPart = part === this.parts.head;
+
+            if (isFirstPart) {
                 console.log("Part " + (i + 1) + " is pointing to " + part.next.value.toString());
-                part.value = part.next.value.clone();
-            } else {
-                console.log("Part " + (i + 1) + " is the first part");
+                console.log("Part " + (i + 1) + " is the last part");
                 part.value.addVector(this.direction);
                 ledSquare.wrapAround(part.value);
+            } else {
+                part.value = part.next.value.clone();
             }
         }
 
