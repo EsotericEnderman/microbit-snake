@@ -1,4 +1,4 @@
-class Vector {
+class Vector implements Cloneable<Vector> {
     x: number;
     y: number;
 
