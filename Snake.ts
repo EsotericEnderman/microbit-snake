@@ -98,13 +98,27 @@ class Snake {
     private grow() {
         const tail = this.parts.tail;
 
-        console.log("Current tail position: " + tail.value.toString());
-        console.log("The tail is pointing to " + tail.previous.value.toString());
+        let directions = cloneArray(Vector.cardinalDirections);
 
-        console.log("Cloning tail and adding " + this.direction.clone().negative().toString());
-        console.log("Wrapped around: " + ledSquare.wrapAround(this.parts.tail.value.clone().addVector(this.direction.clone().negative())));
+        for (let i = 0; i < this.parts.length; i++) {
+            const direction = this.parts.elements[i].value;
+            const cloned = tail.value.clone().addVector(direction);
 
-        this.parts.push(ledSquare.wrapAround(this.parts.tail.value.clone().addVector(this.direction.clone().negative())));
+            if (this.isOnPosition(cloned)) {
+                directions.splice(i, 1);
+                i--;
+            }
+        }
+
+        if (directions.length === 0) {
+            // Game over
+            return;
+        }
+
+        const selectedDirection = chooseRandomly(directions);
+        const newPart = tail.value.clone().addVector(selectedDirection);
+
+        this.parts.push(newPart);
     }
 
     public hasCollectedCollectible() {
