@@ -111,7 +111,7 @@ class Snake {
         }
 
         if (directions.length === 0) {
-            // Game over
+            this.gameOver();
             return;
         }
 
@@ -119,6 +119,10 @@ class Snake {
         const newPart = ledSquare.wrapAround(tail.value.clone().addVector(selectedDirection));
 
         this.parts.push(newPart);
+    }
+
+    private gameOver() {
+        basic.showString("GAME OVER!");
     }
 
     public hasCollectedCollectible() {
