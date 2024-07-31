@@ -99,7 +99,7 @@ class Snake {
         const tail = this.parts.tail;
 
         console.log("Current tail position: " + tail.value.toString());
-        console.log("The tail is pointing to " + tail.next.value.toString());
+        console.log("The tail is pointing to " + tail.previous.value.toString());
 
         console.log("Cloning tail and adding " + this.direction.clone().negative().toString());
         console.log("Wrapped around: " + ledSquare.wrapAround(this.parts.tail.value.clone().addVector(this.direction.clone().negative())));
