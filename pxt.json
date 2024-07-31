@@ -21,7 +21,8 @@
         "Square.ts",
         "chooseRandomly.ts",
         "cloneArray.ts",
-        "Collectible.ts"
+        "Collectible.ts",
+        "Cloneable.ts"
     ],
     "testFiles": [
         "test.ts"
