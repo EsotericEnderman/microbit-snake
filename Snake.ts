@@ -32,11 +32,7 @@ class Snake {
                 }
             }
 
-            console.log("There are " + directions.length + " directions to choose from");
             this.direction = chooseRandomly(directions);
-            console.log("Chosen direction = " + this.direction);
-
-            console.log("Snake = " + this.toString());
         }
 
         loops.everyInterval(snakeMoveIntervalMilliseconds, () => this.move())
@@ -46,32 +42,17 @@ class Snake {
     }
 
     private move() {
-        if (!this.direction) {
-            console.log("No direction defined");
-        }
-
-        console.log("Snake = " + this.toString())
-
-        console.log("Moving in direction " + this.direction);
-
-        console.log("There are " + this.parts.length + " parts");
-
         for (let i = this.parts.length - 1; i >= 0; i--) {
-            console.log("Moving part " + (i + 1));
-
             const part = this.parts.elements[i];
 
             const isFirstPart = part === this.head;
             const isLastPart = part === this.tail;
 
             if (isLastPart) {
-                console.log("Unplotting " + part.value.toString());
                 led.unplot(part.value.x, part.value.y);
             }
 
             if (isFirstPart) {
-                console.log("Part " + (i + 1) + " is pointing to " + part.next.value.toString());
-                console.log("Part " + (i + 1) + " is the first part");
                 part.value.addVector(this.direction);
                 ledSquare.wrapAround(part.value);
             } else {
@@ -83,8 +64,6 @@ class Snake {
             this.gameOver();
             return;
         }
-
-        console.log("Snake = " + this.toString());
 
         if (this.hasCollectedCollectible()) {
             this.onCollectedCollectible();
@@ -116,51 +95,26 @@ class Snake {
     }
 
     private onCollectedCollectible() {
-        console.log("Collected collectible");
-
         Collectible.instance.collect();
         this.grow();
     }
 
     private grow() {
-        console.log("Growing snake");
-
         const tail = this.tail;
 
-        console.log("The tail is at " + tail.value.toString());
-
         let directions = cloneArray(Vector.cardinalDirections);
-
-        console.log("Directions: ")
-        for (const direction of directions) {
-            console.log(direction.toString());
-        }
-
-        console.log("Directions: ")
-        for (const direction of Vector.cardinalDirections) {
-            console.log(direction.toString());
-        }
 
         for (let i = 0; i < directions.length; i++) {
             const direction = directions[i];
 
-            console.log("Checking direction " + direction.toString());
-
             const cloned = ledSquare.wrapAround(this.tail.value.clone().addVector(direction));
 
-            console.log("Checking position " + cloned.toString());
-
             const isInvalidPosition = this.isOnPosition(cloned);
-            console.log("Is invalid position: " + isInvalidPosition);
-
             if (isInvalidPosition) {
-                console.log(cloned.toString() + " is an invalid position to grow to");
                 directions.splice(i, 1);
                 i--;
             }
         }
-
-        console.log("Found " + directions.length + " directions to choose from");
 
         if (directions.length === 0) {
             this.gameOver();
@@ -212,8 +166,6 @@ class Snake {
     public static generateRandomParts(partCount: number): BiDirectionalLinkedList<SnakePart> {
         let currentPosition = Vector.getRandomVector(minimumX, minimumY, maximumX, maximumY);
 
-        console.log("Starting position = " + currentPosition.toString());
-
         const parts: BiDirectionalLinkedList<SnakePart> = new BiDirectionalLinkedList(
             [{
                 value: currentPosition.clone(),
@@ -244,10 +196,6 @@ class Snake {
 
             parts.push(currentPosition.clone());
         }
-
-        console.log("Generated " + parts.length + " random parts");
-        console.log("Head = " + parts.head.value.toString());
-        console.log("Tail = " + parts.tail.value.toString());
 
         return parts;
     }
