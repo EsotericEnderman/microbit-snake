@@ -96,19 +96,44 @@ class Snake {
     }
 
     private grow() {
+        console.log("Growing snake");
+
         const tail = this.parts.tail;
+
+        console.log("The tail is at " + tail.value.toString());
 
         let directions = cloneArray(Vector.cardinalDirections);
 
+        console.log("Directions: ")
+        for (const direction of directions) {
+            console.log(direction.toString());
+        }
+
+        console.log("Directions: ")
+        for (const direction of Vector.cardinalDirections) {
+            console.log(direction.toString());
+        }
+
         for (let i = 0; i < directions.length; i++) {
             const direction = directions[i];
+
+            console.log("Checking direction " + direction.toString());
+
             const cloned = ledSquare.wrapAround(tail.value.clone().addVector(direction));
 
-            if (this.isOnPosition(cloned)) {
+            console.log("Checking position " + cloned.toString());
+
+            const isInvalidPosition = this.isOnPosition(cloned);
+            console.log("Is invalid position: " + isInvalidPosition);
+
+            if (isInvalidPosition) {
+                console.log(cloned.toString() + " is an invalid position to grow to");
                 directions.splice(i, 1);
                 i--;
             }
         }
+
+        console.log("Found " + directions.length + " directions to choose from");
 
         if (directions.length === 0) {
             this.gameOver();
