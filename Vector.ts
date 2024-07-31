@@ -47,6 +47,17 @@ class Vector {
         return this.add(vector.x, vector.y);
     }
 
+    public multiply(scalar: number) {
+        this.x *= scalar;
+        this.y *= scalar;
+
+        return this;
+    }
+
+    public negative() {
+        return this.multiply(-1);
+    }
+
     public clone() {
         return new Vector(this.x, this.y);
     }
