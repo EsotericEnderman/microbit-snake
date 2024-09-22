@@ -1,3 +1,6 @@
+# Microbit Snake
+
+> The classic snake game on a Microbit.
 
 > Open this page at [https://EsotericEnderman.github.io/microbit-snake/](https://EsotericEnderman.github.io/microbit-snake/)
 
