@@ -7,22 +7,22 @@
         "microphone": "*"
     },
     "files": [
-        "main.ts",
+        "src/main.ts",
         "README.md",
-        "constants.ts",
-        "round.ts",
-        "random.ts",
-        "Vector.ts",
-        "BiDirectionalLinkedList.ts",
-        "Snake.ts",
-        "BiDirectionalLinkedListElement.ts",
-        "SnakePart.ts",
-        "Rectangle.ts",
-        "Square.ts",
-        "chooseRandomly.ts",
-        "cloneArray.ts",
-        "Collectible.ts",
-        "Cloneable.ts"
+        "src/constants.ts",
+        "src/functions/round.ts",
+        "src/functions/random.ts",
+        "src/classes/Vector.ts",
+        "src/classes/BiDirectionalLinkedList.ts",
+        "src/classes/Snake.ts",
+        "src/classes/BiDirectionalLinkedListElement.ts",
+        "src/classes/SnakePart.ts",
+        "src/classes/Rectangle.ts",
+        "src/classes/Square.ts",
+        "src/functions/chooseRandomly.ts",
+        "src/functions/cloneArray.ts",
+        "src/classes/Collectible.ts",
+        "src/interfaces/Cloneable.ts"
     ],
     "testFiles": [
         "test.ts"
