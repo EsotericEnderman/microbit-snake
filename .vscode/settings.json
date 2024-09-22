@@ -27,7 +27,12 @@
         "**/.pxt": true
     },
     "cSpell.words": [
+        "despawn",
         "Enderman",
-        "microbit"
+        "initialise",
+        "makecode",
+        "microbit",
+        "tsprj",
+        "unplot"
     ]
 }
