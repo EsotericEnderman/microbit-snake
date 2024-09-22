@@ -2,9 +2,7 @@
     "name": "microbit-snake",
     "description": "The classic snake game on a Microbit.",
     "dependencies": {
-        "core": "*",
-        "radio": "*",
-        "microphone": "*"
+        "core": "*"
     },
     "files": [
         "src/main.ts",
