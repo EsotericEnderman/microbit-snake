@@ -1,6 +1,6 @@
 {
     "name": "microbit-snake",
-    "description": "The classic snake game on a Microbit.",
+    "description": "The classic Snake game on a Microbit.",
     "dependencies": {
         "core": "*"
     },
